@@ -1,0 +1,1008 @@
+{
+	"info": {
+		"_postman_id": "5e328a87-c1ba-4f70-98b4-ae31077f0daf",
+		"name": "Voco Test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "username",
+									"value": "Ekrem",
+									"type": "default"
+								},
+								{
+									"key": "password",
+									"value": "1232132132198312",
+									"type": "default"
+								},
+								{
+									"key": "email",
+									"value": "ekrem@ekrem.com",
+									"type": "default"
+								},
+								{
+									"key": "age",
+									"value": "20",
+									"type": "default"
+								},
+								{
+									"key": "gender",
+									"value": "Erkek",
+									"type": "default"
+								},
+								{
+									"key": "addresses",
+									"value": "[\"Adres 1\", \"Adres 2\", \"Adres 3\"]",
+									"type": "default"
+								},
+								{
+									"key": "avatar",
+									"type": "file",
+									"src": "/C:/Users/alany/Downloads/1655139890121.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/auth/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"Ekrem\",\r\n    \"password\": \"1232132132198312\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Me",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTdiMTkwNTNmOGMzMjliNjM4M2RmYzkiLCJ1c2VybmFtZSI6IkVrcmVtIiwiZW1haWwiOiJla3JlbUBla3JlbS5jb20iLCJhZ2UiOjIwLCJnZW5kZXIiOiJFcmtlayIsInByb2ZpbGVJbWFnZUV4dGVuc2lvbiI6ImpwZyIsIl9fdiI6MCwiaWF0IjoxNzAyNTc0NTIxLCJleHAiOjE3MDI3NDczMjF9.dHlbvfwy_AYgkDvJFC6ikdfC6wzDqGiiCPCsZuXyZRs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/auth/me",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"auth",
+								"me"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Restaurants",
+			"item": [
+				{
+					"name": "Restaurant List",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTdiMTkwNTNmOGMzMjliNjM4M2RmYzkiLCJ1c2VybmFtZSI6IkVrcmVtIiwiZW1haWwiOiJla3JlbUBla3JlbS5jb20iLCJhZ2UiOjIwLCJnZW5kZXIiOiJFcmtlayIsInByb2ZpbGVJbWFnZUV4dGVuc2lvbiI6ImpwZyIsIl9fdiI6MCwiaWF0IjoxNzAyNTc0NTIxLCJleHAiOjE3MDI3NDczMjF9.dHlbvfwy_AYgkDvJFC6ikdfC6wzDqGiiCPCsZuXyZRs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/restaurant/list?search=pide&latitude=39.93&longitude=32.85",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"restaurant",
+								"list"
+							],
+							"query": [
+								{
+									"key": "search",
+									"value": "pide"
+								},
+								{
+									"key": "latitude",
+									"value": "39.93"
+								},
+								{
+									"key": "longitude",
+									"value": "32.85"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "My Restaurants",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTdiMTkwNTNmOGMzMjliNjM4M2RmYzkiLCJ1c2VybmFtZSI6IkVrcmVtIiwiZW1haWwiOiJla3JlbUBla3JlbS5jb20iLCJhZ2UiOjIwLCJnZW5kZXIiOiJFcmtlayIsInByb2ZpbGVJbWFnZUV4dGVuc2lvbiI6ImpwZyIsIl9fdiI6MCwiaWF0IjoxNzAyNTc0NTIxLCJleHAiOjE3MDI3NDczMjF9.dHlbvfwy_AYgkDvJFC6ikdfC6wzDqGiiCPCsZuXyZRs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/restaurant/my-restaurants",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"restaurant",
+								"my-restaurants"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Restaurant",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTdiMTkwNTNmOGMzMjliNjM4M2RmYzkiLCJ1c2VybmFtZSI6IkVrcmVtIiwiZW1haWwiOiJla3JlbUBla3JlbS5jb20iLCJhZ2UiOjIwLCJnZW5kZXIiOiJFcmtlayIsInByb2ZpbGVJbWFnZUV4dGVuc2lvbiI6ImpwZyIsIl9fdiI6MCwiaWF0IjoxNzAyNTc0NTIxLCJleHAiOjE3MDI3NDczMjF9.dHlbvfwy_AYgkDvJFC6ikdfC6wzDqGiiCPCsZuXyZRs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Ozkardesler Pide Salonu",
+									"type": "default"
+								},
+								{
+									"key": "description",
+									"value": "Kasarli Pide, Kiymali Pide, Yumurtali Pide vb.",
+									"type": "default"
+								},
+								{
+									"key": "categories",
+									"value": "[\"Fast Food\", \"Ev Yemekleri\", \"Pide\"]",
+									"type": "default"
+								},
+								{
+									"key": "logo",
+									"type": "file",
+									"src": "/C:/Users/alany/Downloads/109_509128368.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/restaurant/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"restaurant",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Branch List",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTdiMTkwNTNmOGMzMjliNjM4M2RmYzkiLCJ1c2VybmFtZSI6IkVrcmVtIiwiZW1haWwiOiJla3JlbUBla3JlbS5jb20iLCJhZ2UiOjIwLCJnZW5kZXIiOiJFcmtlayIsInByb2ZpbGVJbWFnZUV4dGVuc2lvbiI6ImpwZyIsIl9fdiI6MCwiaWF0IjoxNzAyNTc0NTIxLCJleHAiOjE3MDI3NDczMjF9.dHlbvfwy_AYgkDvJFC6ikdfC6wzDqGiiCPCsZuXyZRs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/restaurant/list-branch?restaurantId=657b56d5dd489a91a71cdfea",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"restaurant",
+								"list-branch"
+							],
+							"query": [
+								{
+									"key": "restaurantId",
+									"value": "657b56d5dd489a91a71cdfea"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Branch",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTdiMTkwNTNmOGMzMjliNjM4M2RmYzkiLCJ1c2VybmFtZSI6IkVrcmVtIiwiZW1haWwiOiJla3JlbUBla3JlbS5jb20iLCJhZ2UiOjIwLCJnZW5kZXIiOiJFcmtlayIsInByb2ZpbGVJbWFnZUV4dGVuc2lvbiI6ImpwZyIsIl9fdiI6MCwiaWF0IjoxNzAyNTc0NTIxLCJleHAiOjE3MDI3NDczMjF9.dHlbvfwy_AYgkDvJFC6ikdfC6wzDqGiiCPCsZuXyZRs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"restaurantId\": \"657d95a35b5db9671be9233a\",\r\n    \"name\": \"Bayi 1\",\r\n    \"addressCity\": \"Istanbul\",\r\n    \"addressCounty\": \"Sisli\",\r\n    \"addressDescription\": \"Pide Salonu 1\",\r\n    \"addressLatitude\": 50.5,\r\n    \"addressLongitude\": 36.45\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/restaurant/create-branch",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"restaurant",
+								"create-branch"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Menu List",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTdiMTkwNTNmOGMzMjliNjM4M2RmYzkiLCJ1c2VybmFtZSI6IkVrcmVtIiwiZW1haWwiOiJla3JlbUBla3JlbS5jb20iLCJhZ2UiOjIwLCJnZW5kZXIiOiJFcmtlayIsInByb2ZpbGVJbWFnZUV4dGVuc2lvbiI6ImpwZyIsIl9fdiI6MCwiaWF0IjoxNzAyNTc0NTIxLCJleHAiOjE3MDI3NDczMjF9.dHlbvfwy_AYgkDvJFC6ikdfC6wzDqGiiCPCsZuXyZRs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/restaurant/list-menu?restaurantId=657b56d5dd489a91a71cdfea",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"restaurant",
+								"list-menu"
+							],
+							"query": [
+								{
+									"key": "restaurantId",
+									"value": "657b56d5dd489a91a71cdfea"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Menu",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTdiMTkwNTNmOGMzMjliNjM4M2RmYzkiLCJ1c2VybmFtZSI6IkVrcmVtIiwiZW1haWwiOiJla3JlbUBla3JlbS5jb20iLCJhZ2UiOjIwLCJnZW5kZXIiOiJFcmtlayIsInByb2ZpbGVJbWFnZUV4dGVuc2lvbiI6ImpwZyIsIl9fdiI6MCwiaWF0IjoxNzAyNTc0NTIxLCJleHAiOjE3MDI3NDczMjF9.dHlbvfwy_AYgkDvJFC6ikdfC6wzDqGiiCPCsZuXyZRs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "restaurantId",
+									"value": "657d95a35b5db9671be9233a",
+									"type": "default"
+								},
+								{
+									"key": "price",
+									"value": "256",
+									"type": "default"
+								},
+								{
+									"key": "description",
+									"value": "15 tane pide",
+									"type": "default"
+								},
+								{
+									"key": "banner",
+									"type": "file",
+									"src": "/C:/Users/alany/Downloads/123213.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/restaurant/create-menu",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"restaurant",
+								"create-menu"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Restaurant",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTdiMTkwNTNmOGMzMjliNjM4M2RmYzkiLCJ1c2VybmFtZSI6IkVrcmVtIiwiZW1haWwiOiJla3JlbUBla3JlbS5jb20iLCJhZ2UiOjIwLCJnZW5kZXIiOiJFcmtlayIsInByb2ZpbGVJbWFnZUV4dGVuc2lvbiI6ImpwZyIsIl9fdiI6MCwiaWF0IjoxNzAyNTc0NTIxLCJleHAiOjE3MDI3NDczMjF9.dHlbvfwy_AYgkDvJFC6ikdfC6wzDqGiiCPCsZuXyZRs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/restaurant/restaurant?restaurantId=657d95385b5db9671be9232b",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"restaurant",
+								"restaurant"
+							],
+							"query": [
+								{
+									"key": "restaurantId",
+									"value": "657d95385b5db9671be9232b"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Branch",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTdiMTkwNTNmOGMzMjliNjM4M2RmYzkiLCJ1c2VybmFtZSI6IkVrcmVtIiwiZW1haWwiOiJla3JlbUBla3JlbS5jb20iLCJhZ2UiOjIwLCJnZW5kZXIiOiJFcmtlayIsInByb2ZpbGVJbWFnZUV4dGVuc2lvbiI6ImpwZyIsIl9fdiI6MCwiaWF0IjoxNzAyNTc0NTIxLCJleHAiOjE3MDI3NDczMjF9.dHlbvfwy_AYgkDvJFC6ikdfC6wzDqGiiCPCsZuXyZRs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/restaurant/branch?branchId=657b5f28d0cd8fb211f2eaf4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"restaurant",
+								"branch"
+							],
+							"query": [
+								{
+									"key": "branchId",
+									"value": "657b5f28d0cd8fb211f2eaf4"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Menu",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTdiMTkwNTNmOGMzMjliNjM4M2RmYzkiLCJ1c2VybmFtZSI6IkVrcmVtIiwiZW1haWwiOiJla3JlbUBla3JlbS5jb20iLCJhZ2UiOjIwLCJnZW5kZXIiOiJFcmtlayIsInByb2ZpbGVJbWFnZUV4dGVuc2lvbiI6ImpwZyIsIl9fdiI6MCwiaWF0IjoxNzAyNTc0NTIxLCJleHAiOjE3MDI3NDczMjF9.dHlbvfwy_AYgkDvJFC6ikdfC6wzDqGiiCPCsZuXyZRs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/restaurant/menu?menuId=657b63c2d1b2365cec7605d5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"restaurant",
+								"menu"
+							],
+							"query": [
+								{
+									"key": "menuId",
+									"value": "657b63c2d1b2365cec7605d5"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Ordering",
+			"item": [
+				{
+					"name": "My Orders",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTdiMTkwNTNmOGMzMjliNjM4M2RmYzkiLCJ1c2VybmFtZSI6IkVrcmVtIiwiZW1haWwiOiJla3JlbUBla3JlbS5jb20iLCJhZ2UiOjIwLCJnZW5kZXIiOiJFcmtlayIsInByb2ZpbGVJbWFnZUV4dGVuc2lvbiI6ImpwZyIsIl9fdiI6MCwiaWF0IjoxNzAyNTc0NTIxLCJleHAiOjE3MDI3NDczMjF9.dHlbvfwy_AYgkDvJFC6ikdfC6wzDqGiiCPCsZuXyZRs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/ordering/my-orders",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"ordering",
+								"my-orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Order",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTdiMTkwNTNmOGMzMjliNjM4M2RmYzkiLCJ1c2VybmFtZSI6IkVrcmVtIiwiZW1haWwiOiJla3JlbUBla3JlbS5jb20iLCJhZ2UiOjIwLCJnZW5kZXIiOiJFcmtlayIsInByb2ZpbGVJbWFnZUV4dGVuc2lvbiI6ImpwZyIsIl9fdiI6MCwiaWF0IjoxNzAyNTc0NTIxLCJleHAiOjE3MDI3NDczMjF9.dHlbvfwy_AYgkDvJFC6ikdfC6wzDqGiiCPCsZuXyZRs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"addressId\": \"657b19053f8c329b6383dfcc\",\r\n    \"menuId\": \"657d95bb5b5db9671be92345\"\r\n}\r\n\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/ordering/order",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"ordering",
+								"order"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "My Votes",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTdiMTkwNTNmOGMzMjliNjM4M2RmYzkiLCJ1c2VybmFtZSI6IkVrcmVtIiwiZW1haWwiOiJla3JlbUBla3JlbS5jb20iLCJhZ2UiOjIwLCJnZW5kZXIiOiJFcmtlayIsInByb2ZpbGVJbWFnZUV4dGVuc2lvbiI6ImpwZyIsIl9fdiI6MCwiaWF0IjoxNzAyNTc0NTIxLCJleHAiOjE3MDI3NDczMjF9.dHlbvfwy_AYgkDvJFC6ikdfC6wzDqGiiCPCsZuXyZRs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/ordering/my-votes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"ordering",
+								"my-votes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Vote",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTdiMTkwNTNmOGMzMjliNjM4M2RmYzkiLCJ1c2VybmFtZSI6IkVrcmVtIiwiZW1haWwiOiJla3JlbUBla3JlbS5jb20iLCJhZ2UiOjIwLCJnZW5kZXIiOiJFcmtlayIsInByb2ZpbGVJbWFnZUV4dGVuc2lvbiI6ImpwZyIsIl9fdiI6MCwiaWF0IjoxNzAyNTc0NTIxLCJleHAiOjE3MDI3NDczMjF9.dHlbvfwy_AYgkDvJFC6ikdfC6wzDqGiiCPCsZuXyZRs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"restaurantId\": \"657d95a35b5db9671be9233a\",\r\n    \"description\": \"Yemekler Berbat\",\r\n    \"points\": 1\r\n}\r\n\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/ordering/vote",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"ordering",
+								"vote"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "My Addresses",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTdiMTkwNTNmOGMzMjliNjM4M2RmYzkiLCJ1c2VybmFtZSI6IkVrcmVtIiwiZW1haWwiOiJla3JlbUBla3JlbS5jb20iLCJhZ2UiOjIwLCJnZW5kZXIiOiJFcmtlayIsInByb2ZpbGVJbWFnZUV4dGVuc2lvbiI6ImpwZyIsIl9fdiI6MCwiaWF0IjoxNzAyNTc0NTIxLCJleHAiOjE3MDI3NDczMjF9.dHlbvfwy_AYgkDvJFC6ikdfC6wzDqGiiCPCsZuXyZRs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/ordering/my-addresses",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"ordering",
+								"my-addresses"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Address",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTdiMTkwNTNmOGMzMjliNjM4M2RmYzkiLCJ1c2VybmFtZSI6IkVrcmVtIiwiZW1haWwiOiJla3JlbUBla3JlbS5jb20iLCJhZ2UiOjIwLCJnZW5kZXIiOiJFcmtlayIsInByb2ZpbGVJbWFnZUV4dGVuc2lvbiI6ImpwZyIsIl9fdiI6MCwiaWF0IjoxNzAyNTc0NTIxLCJleHAiOjE3MDI3NDczMjF9.dHlbvfwy_AYgkDvJFC6ikdfC6wzDqGiiCPCsZuXyZRs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"address\": \"Adres 4\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/ordering/create-address",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"ordering",
+								"create-address"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Address",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTdiMTkwNTNmOGMzMjliNjM4M2RmYzkiLCJ1c2VybmFtZSI6IkVrcmVtIiwiZW1haWwiOiJla3JlbUBla3JlbS5jb20iLCJhZ2UiOjIwLCJnZW5kZXIiOiJFcmtlayIsInByb2ZpbGVJbWFnZUV4dGVuc2lvbiI6ImpwZyIsIl9fdiI6MCwiaWF0IjoxNzAyNTc0NTIxLCJleHAiOjE3MDI3NDczMjF9.dHlbvfwy_AYgkDvJFC6ikdfC6wzDqGiiCPCsZuXyZRs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/ordering/delete-address?addressId=657b8619d9868f8542fca5d5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"ordering",
+								"delete-address"
+							],
+							"query": [
+								{
+									"key": "addressId",
+									"value": "657b8619d9868f8542fca5d5"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Problems",
+			"item": [
+				{
+					"name": "Problem 2 - Nearest 5 Restaurant",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTdiMTkwNTNmOGMzMjliNjM4M2RmYzkiLCJ1c2VybmFtZSI6IkVrcmVtIiwiZW1haWwiOiJla3JlbUBla3JlbS5jb20iLCJhZ2UiOjIwLCJnZW5kZXIiOiJFcmtlayIsInByb2ZpbGVJbWFnZUV4dGVuc2lvbiI6ImpwZyIsIl9fdiI6MCwiaWF0IjoxNzAyNTc0NTIxLCJleHAiOjE3MDI3NDczMjF9.dHlbvfwy_AYgkDvJFC6ikdfC6wzDqGiiCPCsZuXyZRs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/problems/2?search=Lahmacun&latitude=39.93&longitude=32.85",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"problems",
+								"2"
+							],
+							"query": [
+								{
+									"key": "search",
+									"value": "Lahmacun"
+								},
+								{
+									"key": "latitude",
+									"value": "39.93"
+								},
+								{
+									"key": "longitude",
+									"value": "32.85"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Problem 3 - Mass Menu Add",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTdiMTkwNTNmOGMzMjliNjM4M2RmYzkiLCJ1c2VybmFtZSI6IkVrcmVtIiwiZW1haWwiOiJla3JlbUBla3JlbS5jb20iLCJhZ2UiOjIwLCJnZW5kZXIiOiJFcmtlayIsInByb2ZpbGVJbWFnZUV4dGVuc2lvbiI6ImpwZyIsIl9fdiI6MCwiaWF0IjoxNzAyNTc0NTIxLCJleHAiOjE3MDI3NDczMjF9.dHlbvfwy_AYgkDvJFC6ikdfC6wzDqGiiCPCsZuXyZRs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "restaurantId",
+									"value": "657d95a35b5db9671be9233a",
+									"type": "default"
+								},
+								{
+									"key": "menus",
+									"value": "[{\"price\":50,\"description\":\"Kucuk boy peynirli pizza\"},{\"price\":100,\"description\":\"Orta boy mantarli pizza\"},{\"price\":120,\"description\":\"Hamburger\"}]",
+									"type": "default"
+								},
+								{
+									"key": "photos",
+									"type": "file",
+									"src": [
+										"/C:/Users/alany/Downloads/hamburger.jpg",
+										"/C:/Users/alany/Downloads/mantarlipizza.jpeg",
+										"/C:/Users/alany/Downloads/peynirlipizza.jpeg"
+									]
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/problems/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"problems",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Problem 4 - Sort Votes by Gender",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTdiMTkwNTNmOGMzMjliNjM4M2RmYzkiLCJ1c2VybmFtZSI6IkVrcmVtIiwiZW1haWwiOiJla3JlbUBla3JlbS5jb20iLCJhZ2UiOjIwLCJnZW5kZXIiOiJFcmtlayIsInByb2ZpbGVJbWFnZUV4dGVuc2lvbiI6ImpwZyIsIl9fdiI6MCwiaWF0IjoxNzAyNTc0NTIxLCJleHAiOjE3MDI3NDczMjF9.dHlbvfwy_AYgkDvJFC6ikdfC6wzDqGiiCPCsZuXyZRs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/problems/4?gender=Erkek&pageIndex=0",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"problems",
+								"4"
+							],
+							"query": [
+								{
+									"key": "gender",
+									"value": "Erkek"
+								},
+								{
+									"key": "pageIndex",
+									"value": "0"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Problem 5 - Long Query Listing",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTdiMTkwNTNmOGMzMjliNjM4M2RmYzkiLCJ1c2VybmFtZSI6IkVrcmVtIiwiZW1haWwiOiJla3JlbUBla3JlbS5jb20iLCJhZ2UiOjIwLCJnZW5kZXIiOiJFcmtlayIsInByb2ZpbGVJbWFnZUV4dGVuc2lvbiI6ImpwZyIsIl9fdiI6MCwiaWF0IjoxNzAyNTc0NTIxLCJleHAiOjE3MDI3NDczMjF9.dHlbvfwy_AYgkDvJFC6ikdfC6wzDqGiiCPCsZuXyZRs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/problems/5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"problems",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Problem 4 - Sort Votes by Gender Copy",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTdiMTkwNTNmOGMzMjliNjM4M2RmYzkiLCJ1c2VybmFtZSI6IkVrcmVtIiwiZW1haWwiOiJla3JlbUBla3JlbS5jb20iLCJhZ2UiOjIwLCJnZW5kZXIiOiJFcmtlayIsInByb2ZpbGVJbWFnZUV4dGVuc2lvbiI6ImpwZyIsIl9fdiI6MCwiaWF0IjoxNzAyNTc0NTIxLCJleHAiOjE3MDI3NDczMjF9.dHlbvfwy_AYgkDvJFC6ikdfC6wzDqGiiCPCsZuXyZRs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/problems/6?pageSize=20&pageIndex=0",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"problems",
+								"6"
+							],
+							"query": [
+								{
+									"key": "pageSize",
+									"value": "20"
+								},
+								{
+									"key": "pageIndex",
+									"value": "0"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
