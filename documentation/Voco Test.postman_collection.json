@@ -963,7 +963,7 @@
 					"response": []
 				},
 				{
-					"name": "Problem 4 - Sort Votes by Gender Copy",
+					"name": "Problem 6 - Pagination",
 					"request": {
 						"auth": {
 							"type": "bearer",
