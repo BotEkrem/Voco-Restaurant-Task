@@ -11,15 +11,55 @@ const upload = multer()
 const restaurantModel = models["restaurantModel"]
 const branchModel = models["branchModel"]
 const menuModel = models["menuModel"]
+const categoryModel = models["categoryModel"]
 
-router.get('/list',  async (req: Request, res: Response) => {
-  const restaurantList = await restaurantModel.find({})
+router.get('/list', async (req: Request, res: Response) => {
+  const {
+    search,
+    longitude,
+    latitude
+  } = req.query
 
-  res.json(restaurantList)
+  const aggsList: any[] = []
+
+  if (latitude && longitude) {
+    aggsList.push({
+      $geoNear: {
+        near: { type: 'Point', coordinates: [ Number(longitude), Number(latitude) ] },
+        distanceField: 'addressCoordinates',
+        spherical: false,
+      }
+    })
+  }
+
+  aggsList.push(
+    {
+      $lookup: {
+        from: "restaurants",
+        localField: "restaurantId",
+        foreignField: "_id",
+        as: "restaurant"
+      }
+    },
+    {
+      $unwind: "$restaurant"
+    }
+  )
+
+  if (search) {
+    const regex = new RegExp(search as string, 'i')
+    aggsList.push({
+      $match: {$or: [{name: {$regex: regex}}, {"restaurant.name": {$regex: regex}}, {"restaurant.description": {$regex: regex}}]}
+    })
+  }
+
+  const data = await branchModel.aggregate(aggsList)
+
+  res.json(data)
 })
 
-router.get('/my-restaurants',  async (req: Request, res: Response) => {
-  const restaurantList = await restaurantModel.find({ createdBy: req.user?._id })
+router.get('/my-restaurants', async (req: Request, res: Response) => {
+  const restaurantList = await restaurantModel.find({createdBy: req.user?._id})
 
   res.json(restaurantList)
 })
@@ -28,12 +68,7 @@ router.post('/create', upload.single('logo'), async (req: Request, res: Response
   const {
     name,
     description,
-    type,
-    addressCity,
-    addressCounty,
-    addressDescription,
-    addressLatitude,
-    addressLongitude,
+    categories
   } = req.body;
 
   const restaurantCheck = await restaurantModel.findOne({name})
@@ -47,13 +82,7 @@ router.post('/create', upload.single('logo'), async (req: Request, res: Response
   const restaurant = restaurantModel({
     name,
     description,
-    type,
     logoExtension: req.file?.originalname.split(".").pop(),
-    addressCity,
-    addressCounty,
-    addressDescription,
-    addressLatitude,
-    addressLongitude,
     createdBy: req.user?._id
   })
 
@@ -61,7 +90,17 @@ router.post('/create', upload.single('logo'), async (req: Request, res: Response
 
   const restaurantResult = await restaurant.save()
 
-  res.json(restaurantResult)
+  const categoryResult = await categoryModel.insertMany(JSON.parse(categories).map((value: string) => {
+    return {
+      restaurantId: restaurant._id,
+      category: value
+    }
+  }))
+
+  res.json({
+    restaurantResult,
+    categories: categoryResult
+  })
 })
 
 router.get('/list-branch', async (req: Request, res: Response) => {
@@ -113,8 +152,7 @@ router.post('/create-branch', async (req: Request, res: Response) => {
     addressCity,
     addressCounty,
     addressDescription,
-    addressLatitude,
-    addressLongitude
+    addressCoordinates: [addressLongitude, addressLatitude]
   })
 
   const branchResult = await branch.save()
@@ -172,9 +210,10 @@ router.delete('/restaurant', async (req: Request, res: Response) => {
     restaurantId
   } = req.query;
 
-  const restaurantDelete = await restaurantModel.deleteOne({ _id: restaurantId })
-  const branchDelete = await branchModel.deleteMany({ restaurantId })
-  const menuDelete = await menuModel.deleteMany({ restaurantId })
+  const restaurantDelete = await restaurantModel.deleteOne({_id: restaurantId})
+  const branchDelete = await branchModel.deleteMany({restaurantId})
+  const menuDelete = await menuModel.deleteMany({restaurantId})
+  const categoryDelete = await categoryModel.deleteMany({restaurantId})
 
   res.json(restaurantDelete)
 })
@@ -184,7 +223,7 @@ router.delete('/branch', async (req: Request, res: Response) => {
     branchId
   } = req.query;
 
-  const branchDelete = await branchModel.deleteOne({ _id: branchId })
+  const branchDelete = await branchModel.deleteOne({_id: branchId})
 
   res.json(branchDelete)
 })
@@ -194,7 +233,7 @@ router.delete('/menu', async (req: Request, res: Response) => {
     menuId
   } = req.query;
 
-  const menuDelete = await menuModel.deleteOne({ _id: menuId })
+  const menuDelete = await menuModel.deleteOne({_id: menuId})
 
   res.json(menuDelete)
 })

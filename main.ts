@@ -14,6 +14,7 @@ import {jwtSessionMiddleware} from "./middlewares/jwtsession.middleware";
 import authRoutes from "./modules/auth/auth.routes";
 import restaurantRoutes from "./modules/restaurant/restaurant.routes";
 import orderingRoutes from "./modules/ordering/ordering.routes";
+import problemsRoutes from "./modules/problems/problems.routes";
 
 const app: Express = express();
 const port = process.env.PORT || 3000;
@@ -25,6 +26,7 @@ app.use(jwtSessionMiddleware)
 app.use('/auth', authRoutes)
 app.use('/restaurant', restaurantRoutes)
 app.use('/ordering', orderingRoutes)
+app.use('/problems', problemsRoutes)
 
 app.get("/", (req: Request, res: Response) => {
   res.send("Voco Restaurant");
